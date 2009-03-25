@@ -3,7 +3,7 @@
 use Test::More tests => 1;
 
 BEGIN {
-	use_ok( 'Devel::OnDestruct' );
+	use_ok( 'Variable::OnDestruct' );
 }
 
-diag( "Testing Devel::OnDestruct $Devel::OnDestruct::VERSION, Perl $], $^X" );
+diag( "Testing Variable::OnDestruct $Variable::OnDestruct::VERSION, Perl $], $^X" );
