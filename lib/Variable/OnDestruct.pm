@@ -2,14 +2,15 @@ package Variable::OnDestruct;
 
 use strict;
 use warnings;
-use base qw/DynaLoader Exporter/;
+use base qw/Exporter/;
+use XSLoader;
 
-##no critic ProhibitAutomaticExportation
+##no critic (ProhibitAutomaticExportation)
 our @EXPORT = qw/on_destruct/;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
-bootstrap Variable::OnDestruct $VERSION;
+XSLoader::load('Variable::OnDestruct', $VERSION);
 
 1;    # End of Variable::OnDestruct
 
@@ -21,7 +22,7 @@ Variable::OnDestruct - Call a subroutine on destruction of a variable.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.03
 
 =cut
 
@@ -85,16 +86,11 @@ L<http://search.cpan.org/dist/Variable-OnDestruct>
 
 =back
 
-
-=head1 ACKNOWLEDGEMENTS
-
-
 =head1 COPYRIGHT & LICENSE
 
 Copyright 2009 Leon Timmermans, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
-
 
 =cut
