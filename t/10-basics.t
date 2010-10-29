@@ -1,12 +1,21 @@
 #!perl -T
 
-use Test::More tests => 3;
+use Test::More tests => 5;
 
 use Variable::OnDestruct;
+use Symbol qw/gensym/;
 
-my (@array, %hash);
+sub foo {
+}
 
-on_destruct my $var, sub { is($_[0], 'foo', "Scalar got destroyed!") };
-$var = 'foo';
-on_destruct @array, sub { ok(1, "Array got destroyed!") };
-on_destruct %hash, sub { ok(1, "hash got destroyed!") };
+
+{
+	my $var = 'foo';
+	my $sub = sub { $var };
+
+	on_destruct $var, sub { is($_[0], 'foo', "Scalar got destroyed!") };
+	on_destruct my @array, sub { pass("Array got destroyed!") };
+	on_destruct my %hash, sub { pass("Hash got destroyed!") };
+	on_destruct &{ $sub }, sub { pass("Sub got destroyed!" ) };
+	on_destruct *{ gensym() }, sub { pass("Glob got destroyed") };
+}

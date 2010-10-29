@@ -11,6 +11,7 @@ static int call_free(pTHX_ SV* var, MAGIC* magic) {
 		PUTBACK;
 	}
 	call_sv(magic->mg_obj, G_VOID | G_DISCARD | G_EVAL | G_KEEPERR);
+	return 0;
 }
 
 static const MGVTBL magic_table  = { 0, 0, 0, 0, call_free };
@@ -21,7 +22,7 @@ void
 on_destruct(variable, subref)
 	SV* variable;
 	CV* subref;
-	PROTOTYPE: \[$@%]&
+	PROTOTYPE: \[$@%&*]&
 	CODE:
 	if (!SvROK(variable))
 		Perl_croak(aTHX_ "Invalid argument!");
