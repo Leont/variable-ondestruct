@@ -22,7 +22,7 @@ my $builder = Module::Build->new(
 	meta_merge => {
 		resources       => {
 			bugtracker  => 'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Variable-OnDestruct',
-			repository  => 'http://github.com/Leont/variable-ondestruct/tree',
+			repository  => 'http://github.com/Leont/variable-ondestruct',
 		},
 		keywords        => [ 'destructor' ],
 	},
