@@ -2,6 +2,7 @@ Revision history for Variable-OnDestruct
 
 {{$NEXT}}
         - Don't run destructor in late global destruction
+        - Run callback on alternative stack
 
 0.03    2010-10-30
         Added support for subs and globs
