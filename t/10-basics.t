@@ -1,6 +1,7 @@
 #!perl -T
 
-use Test::More tests => 5;
+use strict;
+use Test::More;
 
 use Variable::OnDestruct;
 use Symbol qw/gensym/;
@@ -19,3 +20,19 @@ sub foo {
 	on_destruct &{ $sub }, sub { pass("Sub got destroyed!" ) };
 	on_destruct *{ gensym() }, sub { pass("Glob got destroyed") };
 }
+
+{
+	my $counter = 0;
+	{
+		my %hash;
+		on_destruct $hash{foo}, sub { $counter++ };
+		{
+			local $hash{foo};
+			is($counter, 0);
+		}
+		is($counter, 0);
+	}
+	is($counter, 1);
+}
+
+done_testing(8);
