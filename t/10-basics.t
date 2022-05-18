@@ -11,7 +11,7 @@ subtest 'Variable types', sub {
 	my $var = 'foo';
 	my $sub = sub { $var };
 
-	on_destruct $var, sub { is($_[0], 'foo', "Scalar got destroyed!") };
+	on_destruct $var, sub { pass("Scalar got destroyed!") };
 	on_destruct my @array, sub { pass("Array got destroyed!") };
 	on_destruct my %hash, sub { pass("Hash got destroyed!") };
 	on_destruct &{ $sub }, sub { pass("Sub got destroyed!" ) };

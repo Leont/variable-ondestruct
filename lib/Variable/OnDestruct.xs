@@ -11,10 +11,6 @@ static int call_free(pTHX_ SV* var, MAGIC* magic) {
 	}
 	PUSHSTACKi(PERLSI_MAGIC);
 	PUSHMARK(SP);
-	if (SvTYPE(var) < SVt_PVGV) {
-		PUSHs(var);
-		PUTBACK;
-	}
 	call_sv(magic->mg_obj, G_VOID | G_DISCARD | G_EVAL | G_KEEPERR);
 	POPSTACK;
 	return 0;
