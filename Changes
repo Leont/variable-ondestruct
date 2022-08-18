@@ -1,6 +1,7 @@
 Revision history for Variable-OnDestruct
 
 {{$NEXT}}
+          - Add on_destruct_fifo
 
 0.05      2022-05-18 23:43:52+02:00 Europe/Amsterdam
           - Don't copy magic to localized variable

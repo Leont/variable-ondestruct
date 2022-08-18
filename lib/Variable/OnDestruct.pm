@@ -7,6 +7,7 @@ use XSLoader;
 
 ##no critic (ProhibitAutomaticExportation)
 our @EXPORT = qw/on_destruct/;
+our @EXPORT_OK = qw/on_destruct_fifo/;
 
 XSLoader::load('Variable::OnDestruct', __PACKAGE__->VERSION);
 
@@ -31,4 +32,8 @@ This module allows you to let a function be called when a variable gets destroye
 =func on_destruct $variable, \&sub;
 
 This function adds a destructor to a variable. It is exported by default.
+
+=func on_destruct_fifo $variable, \&sub;
+
+This function adds a destructor to a variable. When adding multiple destructors, this will execute them in fifo order, unlike C<on_destruct> which will handle them in lifo order.
 
