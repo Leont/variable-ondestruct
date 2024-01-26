@@ -1,6 +1,7 @@
 Revision history for Variable-OnDestruct
 
 {{$NEXT}}
+          - Don't catch exceptions from destruct handlers
 
 0.06      2022-08-18 17:23:20+02:00 Europe/Amsterdam
           - Add on_destruct_fifo
