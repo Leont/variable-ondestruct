@@ -1,7 +1,7 @@
 package Variable::OnDestruct;
 
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 use Exporter 5.57 'import';
 use XSLoader;
 
@@ -36,4 +36,3 @@ This function adds a destructor to a variable. It is exported by default.
 =func on_destruct_fifo $variable, \&sub;
 
 This function adds a destructor to a variable. When adding multiple destructors, this will execute them in fifo order, unlike C<on_destruct> which will handle them in lifo order.
-
