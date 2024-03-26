@@ -2,6 +2,7 @@
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
+#include "ppport.h"
 
 static int call_free_lifo(pTHX_ SV* var, MAGIC* magic) {
 	dSP;
