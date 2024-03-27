@@ -1,6 +1,8 @@
 Revision history for Variable-OnDestruct
 
 {{$NEXT}}
+
+0.08      2024-03-27 01:26:47+01:00 Europe/Brussels
           - Revert not catching exceptions from destruct handlers
           - Restore functionality on perl <= 5.12
 
